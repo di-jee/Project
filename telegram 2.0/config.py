@@ -1,0 +1,6 @@
+'''insert your token'''
+token = ''
+track_product_database = 'database/products/product_database.db'
+track_database_users = 'database/users/users_database.db'
+table_track_database_users = 'users'
+shelve_way = 'shelve/shelve.db'
