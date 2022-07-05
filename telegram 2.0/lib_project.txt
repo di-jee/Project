@@ -1,6 +1,0 @@
-pyTelegramBotAPI - 4.2.2
-requests - 2.26.0
-bs4 - 0.0.1
-fake-useragent - 0.1.11
-sqlite3
-shelve
