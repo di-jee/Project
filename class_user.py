@@ -35,7 +35,6 @@ class User:
 
 		return oth
 
-
 	# сложение
 	def __add__(self, other):
 		money = self.__get_money_add(other)
