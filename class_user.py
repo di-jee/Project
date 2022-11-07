@@ -5,7 +5,7 @@ class User:
 		self.__balance = balance # get from database
 
 	def __del__(self):
-		print('close database')
+		pass
 
 	@classmethod
 	def __check_other(cls, other, balance=None):
@@ -20,6 +20,13 @@ class User:
 				raise ValueError(f'Other < balance: {other}')
 
 		return other
+
+	@classmethod
+	def __check_other_for_bool(cls, other):
+		if not isinstance(other, (int, User)):
+			raise TypeError('Other not int or User')
+
+		return other if isinstance(other, int) else other.__balance
 
 	# сложение
 	def __add__(self, other):
@@ -54,3 +61,42 @@ class User:
 		self.__balance -= money
 
 		return self
+
+	# __eq__ ==
+	# __ne__ !=
+	# __lt__ <
+	# __gt__ >
+	# __le__ <=
+	# __ge__ >=
+	# методы работают в обратном порядке
+
+	# переопределяем метод сравнения
+	# можно написать только метод __eq__ все равно будет работать
+	# ==
+	def __eq__(self, other):
+		oth = self.__check_other_for_bool(other)
+		return self.__balance == oth
+
+	def __ne__(self, other):
+	 	oth = self.__check_other_for_bool(other)
+	 	return self.__balance != oth
+
+	# <
+	def __lt__(self, other):
+		oth = self.__check_other_for_bool(other)
+		return self.__balance < oth
+
+	# >
+	def __gt__(self, other):
+		oth = self.__check_other_for_bool(other)
+		return self.__balance > oth
+
+	# <=
+	def __le__(self, other):
+		oth = self.__check_other_for_bool(other)
+		return self.__balance <= oth
+
+	# >=
+	def __ge__(self, other):
+		oth = self.__check_other_for_bool(other)
+		return self.__balance >= oth
